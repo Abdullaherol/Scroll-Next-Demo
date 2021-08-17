@@ -25,13 +25,14 @@ public class PlayerMovement : MonoBehaviour
             switch (direction)
             {
                 case MovementDirection.X:
-                    targetPosition += new Vector3(0, 0, swipe.x);
+                    targetPosition += new Vector3(swipe.x, 0, 0);
+                    
                     break;
                 case MovementDirection.Y:
                     targetPosition += new Vector3(0, swipe.x,0);
                     break;
                 case MovementDirection.Z:
-                    targetPosition += new Vector3(swipe.x, 0, 0);
+                    targetPosition += new Vector3(0, 0, swipe.x);
                     break;
                 default:
                     break;
