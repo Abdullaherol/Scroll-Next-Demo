@@ -6,8 +6,9 @@ using UnityEngine;
 public class SwipeController : MonoBehaviour
 {
     public Vector2 Swipe = new Vector2();
-    [Range(0,1)]
+    [Range(0, 1)]
     public float sensitivity = .001f;
+    public float zeroDuration = 10;
     private Vector3 lastPos;
 
     void Update()
@@ -20,7 +21,7 @@ public class SwipeController : MonoBehaviour
             Swipe = (Input.mousePosition - lastPos) * sensitivity;
         }
 
-        Swipe = Vector2.Lerp(Swipe, new Vector2(0,0),10 * Time.deltaTime);
+        Swipe = Vector2.Lerp(Swipe, new Vector2(0,0), zeroDuration * Time.deltaTime);
         
     }
 }
