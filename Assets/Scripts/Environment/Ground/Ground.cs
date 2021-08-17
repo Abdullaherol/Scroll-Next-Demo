@@ -15,7 +15,12 @@ public class Ground : MonoBehaviour
         animator = GetComponent<Animator>();
         rgb = gameObject.AddComponent<Rigidbody>();
 
+        StartCoroutine(WaitAndFall());
+    }
+    private IEnumerator WaitAndFall()
+    {
         animator.Play("Fall");
+        yield return new WaitForSeconds(groundManager.waitTime);
         rgb.useGravity = true;
     }
 

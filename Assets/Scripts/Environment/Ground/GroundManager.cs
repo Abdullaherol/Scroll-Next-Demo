@@ -15,16 +15,9 @@ public class GroundManager : MonoBehaviour
         if (!grounds.Contains(obj))
         {
             grounds.Add(obj);
-            StartCoroutine(WaitAndFall(obj));
+            Ground ground = obj.AddComponent<Ground>();
+            ground.FallStart(this);
         }
-    }
-
-    private IEnumerator WaitAndFall(GameObject obj)
-    {
-        yield return new WaitForSeconds(waitTime);
-
-        Ground ground = obj.AddComponent<Ground>();
-        ground.FallStart(this);
     }
 
     public void TeleportPool(GameObject obj)
