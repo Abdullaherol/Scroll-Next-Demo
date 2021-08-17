@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float maxDistance;
     public float swipeSpeed;
+    public float positionY = .5f;
     public MovementDirection direction;
 
     public SwipeController swipeController;
@@ -14,11 +15,20 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 targetPosition;
 
+    private Rigidbody rbody;
+
+    void Start()
+    {
+        rbody = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         if (groundChecker.OnGround)
         {
             targetPosition = transform.position;
+
+            rbody.velocity = new Vector3(rbody.velocity.x,0,rbody.velocity.z);
 
             Vector2 swipe = swipeController.Swipe * swipeSpeed;
 
@@ -34,7 +44,10 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            transform.LookAt(targetPosition);
+
+            transform.rotation = Quaternion.LookRotation(transform.position - targetPosition);
+
+            transform.position = new Vector3(transform.position.x, positionY, transform.position.z);
         }
     }
 
