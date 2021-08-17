@@ -10,6 +10,8 @@ public class Ground : MonoBehaviour
 
     public void FallStart(GroundManager groundManager)
     {
+        this.groundManager = groundManager;
+
         animator = GetComponent<Animator>();
         rgb = gameObject.AddComponent<Rigidbody>();
 
