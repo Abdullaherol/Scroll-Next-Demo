@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public bool gameFinished;
     public int[] SceneIndexs;
 
-
+    [System.Serializable]
     public class EnemySettings
     {
         [Header("BasicEnemy")]

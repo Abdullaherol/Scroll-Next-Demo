@@ -20,6 +20,15 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
+        SetStatusRagdoll(false);
+    }
+
+    private void SetStatusRagdoll(bool status)
+    {
+        foreach (var item in GetComponentsInChildren<Rigidbody>())
+        {
+            item.detectCollisions = status;
+        }
     }
 
     void Update()

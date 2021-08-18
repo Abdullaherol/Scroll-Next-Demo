@@ -6,7 +6,7 @@ public class GroundManager : MonoBehaviour
 {
     public float limitY;
     public float waitTime;
-    public Transform poolPosition;
+    public Vector3 poolPosition;
 
     private List<GameObject> grounds = new List<GameObject>();
 
@@ -22,7 +22,7 @@ public class GroundManager : MonoBehaviour
 
     public void TeleportPool(GameObject obj)
     {
-        obj.transform.position = poolPosition.position;
+        obj.transform.position = poolPosition;
         obj.SetActive(false);
     }
 }
